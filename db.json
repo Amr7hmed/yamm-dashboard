@@ -1,0 +1,36 @@
+
+{
+    "orders": [
+      {
+        "orderId": "1",
+        "customerName": "John Doe",
+        "orderDate": "2024-12-01",
+        "status": "Pending",
+        "totalAmount": 100
+      },
+      {
+        "orderId": "2",
+        "customerName": "Jane Smith",
+        "orderDate": "2024-12-02",
+        "status": "Shipped",
+        "totalAmount": 200
+      }
+    ],
+    "users": [
+      {
+        "userId": "1",
+        "username": "johndoe",
+        "email": "johndoe@example.com",
+        "role": "Admin",
+        "isActive": true
+      },
+      {
+        "userId": "2",
+        "username": "janesmith",
+        "email": "janesmith@example.com",
+        "role": "User",
+        "isActive": false
+      }
+    ]
+  }
+  

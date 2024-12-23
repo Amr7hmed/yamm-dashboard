@@ -1,36 +1,41 @@
-
 {
-    "orders": [
-      {
-        "orderId": "1",
-        "customerName": "John Doe",
-        "orderDate": "2024-12-01",
-        "status": "Pending",
-        "totalAmount": 100
-      },
-      {
-        "orderId": "2",
-        "customerName": "Jane Smith",
-        "orderDate": "2024-12-02",
-        "status": "Shipped",
-        "totalAmount": 200
-      }
-    ],
-    "users": [
-      {
-        "userId": "1",
-        "username": "johndoe",
-        "email": "johndoe@example.com",
-        "role": "Admin",
-        "isActive": true
-      },
-      {
-        "userId": "2",
-        "username": "janesmith",
-        "email": "janesmith@example.com",
-        "role": "User",
-        "isActive": false
-      }
-    ]
-  }
-  
+  "orders": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "date": "2024-12-01",
+      "status": "Pending",
+      "total": 100
+    },
+    {
+      "id": "2",
+      "name": "Jane Smith",
+      "date": "2024-12-02",
+      "status": "Shipped",
+      "total": 200
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "johndoe",
+      "email": "johndoe@example.com",
+      "role": "Admin",
+      "isActive": "Active"
+    },
+    {
+      "id": "2",
+      "name": "janesmith",
+      "email": "janesmith@example.com",
+      "role": "User",
+      "isActive": "Active"
+    },
+    {
+      "id": "3",
+      "name": "trr",
+      "email": "trr@example.com",
+      "role": "Guest",
+      "isActive": "غير نشط"
+    }
+  ]
+}

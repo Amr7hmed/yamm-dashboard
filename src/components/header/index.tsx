@@ -1,22 +1,23 @@
-import { Link } from 'react-router-dom'
+
+import { NavLink } from "react-router-dom";
 const Header = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
-    <div className="container-fluid">
+      <div className="container-fluid">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link to="/" className="nav-link">
+            <NavLink to="/" className="nav-link">
               Orders Overview
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link to="/users" className="nav-link">
+            <NavLink to="/users" className="nav-link">
               User Management
-            </Link>
+            </NavLink>
           </li>
         </ul>
-    </div>
-  </nav>
+      </div>
+    </nav>
   )
 }
 

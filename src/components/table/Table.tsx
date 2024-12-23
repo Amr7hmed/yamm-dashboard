@@ -10,10 +10,10 @@ interface TableColumn {
 interface TableProps {
   columns: TableColumn[];
   data: any[];
-  actions: any
+  Actions: React.FC<{ Item: any }>;
 }
 
-const Table: React.FC<TableProps> = ({ columns, data, actions }) => {
+const Table: React.FC<TableProps> = ({ columns, data, Actions }) => {
   return (
     <table className="table table-bordered">
       <thead>
@@ -30,10 +30,11 @@ const Table: React.FC<TableProps> = ({ columns, data, actions }) => {
             {columns.map((col) => (
               <td key={col.key}>{col.render ? col.render(item[col.key]) : item[col.key]}</td>
             ))}
-            <td>{actions}</td>
+            <td><Actions Item={item}/></td>
           </tr>
         ))}
       </tbody>
+      
     </table>
   );
 };

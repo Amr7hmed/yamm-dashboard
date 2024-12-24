@@ -1,11 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
 import Table from '../components/table/Table';
 import { clearSelectedOrder, fetchOrders, selectOrder, updateOrderStatus } from '../redux/slices/orderSlice';
 import { deleteOrder } from '../redux/slices/orderSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../redux/store';
-import { Modal, Button } from 'react-bootstrap';
+import Action from '../components/actions/order-action';
 
 const OrdersOverview = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -26,17 +25,24 @@ const OrdersOverview = () => {
 
   const handleUpdateStatus = () => {
     if (selectedOrder) {
-      dispatch(updateOrderStatus({ id: selectedOrder.id, status: newStatus }))
+      dispatch(updateOrderStatus({
+        id: selectedOrder.id,
+        name: selectedOrder.name,
+        date: selectedOrder.date,
+        status: newStatus,
+        total: selectedOrder.total.toString()
+      }))
         .then(() => {
-          // بعد التحديث، نعيد جلب الطلب المحدث وتحديث المودال.
-          dispatch(selectOrder(selectedOrder.id)); 
-          handleCloseDetails(); // إغلاق المودال بعد التحديث
+          dispatch(selectOrder(selectedOrder.id));
+          handleCloseDetails(); // Close the modal after updating
         });
     }
   };
+
   const handleCloseDetails = () => {
     dispatch(clearSelectedOrder());
   };
+
   const columns = [
     { title: 'Order ID', key: 'id' },
     { title: 'Customer Name', key: 'name' },
@@ -45,41 +51,30 @@ const OrdersOverview = () => {
     { title: 'Total Amount', key: 'total' },
   ];
 
-  const Action = (props: any) => {
-    const { Item } = props;
-    return (
-      <div>
-        <button className="btn btn-info" onClick={() => handleViewDetails(Item.id)}>View</button>
-
-        <button className="btn btn-danger" onClick={() => {
-          handleDelete(Item.id);
-        }}>Delete</button>
-      </div>
-    );
-  }
 
   if (loading) return <p>Loading orders...</p>;
   if (error) return <p>Error: {error}</p>;
+
   return (
     <div className="container-fluid">
       <h2>Orders Overview</h2>
       {orders.length > 0 ? (
-        <Table columns={columns} data={orders} Actions={Action} />
+        <Table columns={columns} data={orders} Actions={(props) => <Action {...props} handleViewDetails={handleViewDetails} handleDelete={handleDelete} />} />
       ) : (
         <p>{emptyMessage}</p>
       )}
-      {/* المودال */}
+
+      {/* Custom Modal */}
       {selectedOrder && (
-        <Modal show={!!selectedOrder} onHide={handleCloseDetails}>
-          <Modal.Header closeButton>
-            <Modal.Title>تفاصيل الطلب</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <p><strong>اسم العميل:</strong> {selectedOrder.customerName}</p>
-            <p><strong>تاريخ الطلب:</strong> {selectedOrder.orderDate}</p>
-            <p><strong>الحالة الحالية:</strong> {selectedOrder.status}</p>
+        <div className="custom-modal" style={{ display: selectedOrder ? 'block' : 'none' }}>
+          <div className="modal-content">
+            <span className="close-btn" onClick={handleCloseDetails}>&times;</span>
+            <h3>Order Details</h3>
+            <p><strong>Customer Name:</strong> {selectedOrder.name}</p>
+            <p><strong>Order Date:</strong> {selectedOrder.date}</p>
+            <p><strong>Current Status:</strong> {selectedOrder.status}</p>
             <label>
-              <strong>تحديث الحالة:</strong>
+              <strong>Update Status:</strong>
               <select
                 value={newStatus}
                 onChange={e => setNewStatus(e.target.value as typeof newStatus)}
@@ -91,17 +86,14 @@ const OrdersOverview = () => {
                 <option value="Cancelled">Cancelled</option>
               </select>
             </label>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseDetails}>
-              إغلاق
-            </Button>
-            <Button variant="primary" onClick={handleUpdateStatus}>
-              تحديث الحالة
-            </Button>
-          </Modal.Footer>
-        </Modal>
+            <div className="modal-footer">
+              <button className="btn btn-secondary" onClick={handleCloseDetails}>Close</button>
+              <button className="btn btn-primary" onClick={handleUpdateStatus}>Update Status</button>
+            </div>
+          </div>
+        </div>
       )}
+
     </div>
   );
 };

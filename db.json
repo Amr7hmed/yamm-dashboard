@@ -4,8 +4,8 @@
       "id": "1",
       "name": "John Doe",
       "date": "2024-12-01",
-      "status": "Pending",
-      "total": 100
+      "total": "100",
+      "status": "Cancelled"
     },
     {
       "id": "2",
@@ -35,7 +35,7 @@
       "name": "trr",
       "email": "trr@example.com",
       "role": "Guest",
-      "isActive": "غير نشط"
+      "isActive": "Inactive"
     }
   ]
 }

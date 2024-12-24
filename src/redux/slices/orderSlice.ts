@@ -1,48 +1,38 @@
-// src/store/ordersSlice.ts
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
-
-export interface Order {
-  id: string;
-  customerName: string;
-  orderDate: string;
-  status: 'Pending' | 'Shipped' | 'Delivered' | 'Cancelled';
-  totalAmount: number;
-}
-
-interface OrdersState {
-  orders: Order[];
-  selectedOrder: Order | null; // عنصر واحد لعرض التفاصيل
-  loading: boolean;
-  error: string | null;
-  emptyMessage: string;
-}
+import { Order, OrdersState, UpdateOrderStatusPayload } from '../../components/types/Orders'; // Import types
 
 const initialState: OrdersState = {
   orders: [],
   selectedOrder: null,
   loading: false,
   error: null,
-  emptyMessage: "لا توجد طلبات متاحة.",
+  emptyMessage: "No orders available.",
 };
 
-// Async thunk لجلب الطلبات
+// Async thunk to fetch orders
 export const fetchOrders = createAsyncThunk('orders/fetchOrders', async () => {
   const response = await axios.get<Order[]>('http://localhost:5000/orders');
   return response.data;
 });
 
-// Async thunk لحذف طلب
+// Async thunk to delete an order
 export const deleteOrder = createAsyncThunk('orders/deleteOrder', async (orderId: string) => {
   await axios.delete(`http://localhost:5000/orders/${orderId}`);
   return orderId;
 });
 
-// Async thunk لتحديث الحالة
+// Async thunk to update order status
 export const updateOrderStatus = createAsyncThunk(
   'orders/updateOrderStatus',
-  async ({ id, status }: { id: string; status: 'Pending' | 'Shipped' | 'Delivered' | 'Cancelled' }) => {
-    await axios.put(`http://localhost:5000/orders/${id}`, { status });
+  async ({ id, name, date, status, total }: UpdateOrderStatusPayload) => {
+    await axios.put(`http://localhost:5000/orders/${id}`, { 
+      id,
+      name,
+      date,
+      total,
+      status,
+     });
     return { id, status };
   }
 );
@@ -75,7 +65,7 @@ const ordersSlice = createSlice({
       .addCase(deleteOrder.fulfilled, (state, action: PayloadAction<string>) => {
         state.orders = state.orders.filter(order => order.id !== action.payload);
         if (state.orders.length === 0) {
-          state.emptyMessage = "لا توجد طلبات متاحة.";
+          state.emptyMessage = "No orders available.";
         }
       })
       .addCase(deleteOrder.rejected, (state, action) => {

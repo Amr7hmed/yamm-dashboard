@@ -15,27 +15,28 @@ interface TableProps {
 
 const Table: React.FC<TableProps> = ({ columns, data, Actions }) => {
   return (
-    <table className="table table-bordered">
-      <thead>
-        <tr>
-          {columns.map((col) => (
-            <th key={col.key}>{col.title}</th>
-          ))}
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item, index) => (
-          <tr key={index}>
+    <div className="table-responsive">
+      <table className="table table-bordered">
+        <thead>
+          <tr>
             {columns.map((col) => (
-              <td key={col.key}>{col.render ? col.render(item[col.key]) : item[col.key]}</td>
+              <th key={col.key}>{col.title}</th>
             ))}
-            <td><Actions Item={item}/></td>
+            <th>Actions</th>
           </tr>
-        ))}
-      </tbody>
-      
-    </table>
+        </thead>
+        <tbody>
+          {data.map((item, index) => (
+            <tr key={index}>
+              {columns.map((col) => (
+                <td key={col.key}>{col.render ? col.render(item[col.key]) : item[col.key]}</td>
+              ))}
+              <td><Actions Item={item}/></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Table from '../components/table/Table';
 
-// بيانات وهمية للاختبار
+// Fake test data
 const mockData = [
   { id: '1', name: 'Order 1', status: 'Pending' },
   { id: '2', name: 'Order 2', status: 'Shipped' },

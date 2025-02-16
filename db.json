@@ -1,41 +1,76 @@
 {
-  "orders": [
+  "Orders": [
     {
-      "id": "1",
-      "name": "John Doe",
-      "date": "2024-12-01",
-      "total": "100",
-      "status": "Cancelled"
+      "id": "ORD121",
+      "reason": "Defective item",
+      "store_name": "Tech Store",
+      "store_logo": "https://via.placeholder.com/50",
+      "store_url": "https://google.com/",
+      "amount": 2600,
+      "active": true,
+      "decision": "Accept",
+      "items": [
+        {
+          "id": "ITEM1",
+          "name": "Laptop",
+          "price": 1000,
+          "quantity": 1
+        },
+        {
+          "id": "ITEM2",
+          "name": "Headphone",
+          "price": 300,
+          "quantity": 2
+        },
+        {
+          "id": "ITEM3",
+          "name": "Book",
+          "price": 50,
+          "quantity": 4
+        },
+        {
+          "id": "ITEM4",
+          "name": "TV",
+          "price": 800,
+          "quantity": 1
+        }
+      ]
     },
     {
-      "id": "2",
-      "name": "Jane Smith",
-      "date": "2024-12-02",
-      "status": "Shipped",
-      "total": 200
-    }
-  ],
-  "users": [
-    {
-      "id": "1",
-      "name": "johndoe",
-      "email": "johndoe@example.com",
-      "role": "Admin",
-      "isActive": "Active"
+      "id": "ORD122",
+      "reason": "Defective item",
+      "store_name": "Tech Store",
+      "store_logo": "https://via.placeholder.com/50",
+      "store_url": "https://google.com/",
+      "amount": 120.99,
+      "active": false,
+      "decision": "Reject",
+      "items": [
+        {
+          "id": "ITEM1",
+          "name": "Laptop",
+          "price": 1000,
+          "quantity": 1
+        }
+      ]
     },
     {
-      "id": "2",
-      "name": "janesmith",
-      "email": "janesmith@example.com",
-      "role": "User",
-      "isActive": "Active"
-    },
-    {
-      "id": "3",
-      "name": "trr",
-      "email": "trr@example.com",
-      "role": "Guest",
-      "isActive": "Inactive"
+      "id": "ORD123",
+      "reason": "Defective item",
+      "store_name": "Tech Store",
+      "store_logo": "https://via.placeholder.com/50",
+      "store_url": "https://google.com/",
+      "amount": 120.99,
+      "active": true,
+      "decision": "Accept",
+      "items": [
+        {
+          "id": "ITEM1",
+          "name": "Laptop",
+          "price": 1000,
+          "quantity": 1
+        }
+      ]
     }
   ]
 }

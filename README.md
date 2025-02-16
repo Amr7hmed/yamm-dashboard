@@ -23,8 +23,8 @@ Octane Dashboard is a React-based web application designed to manage orders and 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/octane-dashboard.git
-   cd octane-dashboard
+   git clone https://github.com/your-repo/yamm-dashboard.git
+   cd yamm-dashboard
    ```
 
 2. Install dependencies:

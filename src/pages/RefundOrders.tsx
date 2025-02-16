@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { fetchOrders, updateOrderStatus, updateOrderDecision } from "../api/server";
-import TableComponent from "../components/ordersTable/OrdersTable";
+import TableComponent from "../components/ordersTable";
 
 const RefundOrders: React.FC = () => {
   const queryClient = useQueryClient();

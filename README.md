@@ -1,23 +1,26 @@
-# Octane Dashboard
+# Yamm Dashboard
 
 ## Description
-Octane Dashboard is a React-based web application designed to manage orders and users efficiently. The project uses modern web development tools and libraries like Vite, Redux Toolkit, and React Router.
+
+Yamm Dashboard is a React-based web application designed to manage refund orders efficiently. The project utilizes modern web development tools and libraries like React.js, Mui, and React Query.
 
 ## Features
-- Manage orders with functionalities to view, update status, and delete orders.
-- User management with the ability to toggle user status and roles.
-- Responsive design with Bootstrap for styling.
-- JSON Server for simulating a backend API.
+- Display a list of refund orders with all necessary details.
+- Manage order decisions through a dropdown menu (Reject, Accept, Escalate).
+- Toggle order status between active and inactive using a switch.
+- Navigate to a detailed order page by clicking an icon button.
+- A reusable and configurable table component for data display.
+- Instant updates to the table without page reloads.
+- Notification toasters for user actions.
+- Pagination with a maximum of 3 orders per page.
+- RESTful API integration with proper loading and error handling states.
 
 ## Technologies Used
 - React
-- Redux Toolkit
-- React Router
+- React Query
 - TypeScript
-- Bootstrap
-- Sass
+- Mui
 - JSON Server
-- Jest & React Testing Library (for testing)
 
 ## Installation
 
@@ -26,142 +29,53 @@ Octane Dashboard is a React-based web application designed to manage orders and 
    git clone https://github.com/your-repo/yamm-dashboard.git
    cd yamm-dashboard
    ```
-
 2. Install dependencies:
    ```bash
    npm install
    ```
-
 3. Start the JSON server:
    ```bash
-   npm run start:server
+   npx json-server --watch db.json --port 5000
    ```
-
 4. Start the development server:
    ```bash
    npm run dev
    ```
-
 5. Open your browser and navigate to:
    ```
    http://localhost:5173
    ```
+##  Usage
+- Navigate to Orders Page: Displays refund orders in a paginated table.
+- Update Order Decision: Use the dropdown to accept, reject, or escalate orders.
+- Toggle Order Status: Switch between active/inactive.
+- View Order Details: Click the icon to navigate to a detailed order view.
 
 ## Scripts
-
 - `npm run dev`: Starts the development server.
-- `npm run build`: Builds the project for production.
-- `npm run lint`: Runs ESLint for code linting.
-- `npm run start:server`: Starts the JSON server on port 5000.
-- `npm run test`: Runs the test suite.
-- `npm run preview`: Serves the production build for preview.
-
 ## Folder Structure
 
 ```
 ├── src
 │   ├── components 
-│   │   ├── actions
-│   │   │   ├── order-action.tsx # order Page Actions 
-│   │   │   ├── user-action.tsx  # user Actions  
-│   │   ├── header
-│   │   │   ├── Header.tsx          # Navigation header
-│   │   ├── table
-│   │   │   ├── Table.tsx           # Reusable table component
+│   │   ├── ordersTable
+│   │   │   ├── index.tsx 
+│   │   │   ├── OrderRow.tsx 
+│   │   │   ├── TableHead.tsx   
+│   │   ├── sideBar
+│   │   │   ├── index.tsx
+│   │   │   ├── SidebarItem.tsx
+│   │   │   ├── SidebarList.tsx
+│   │   │   ├── ThemeToggle.tsx
 │   │   ├── types
-│   │   │   ├── Orders.ts # Typs order
-│   │   │   ├── storeTypes.ts  # store All  
-│   │   │   ├── Users.ts # Typs Users
+│   │   │   ├── order.ts # Typs order
 │   ├── pages
-│   │   ├── OrdersOverview.tsx  # Orders management page
-│   │   ├── UsersOverview.tsx   # User management page
-│   ├── redux
-│   │   ├── slices
-│   │   │   ├── ordersSlice.ts  # Redux slice for orders
-│   │   │   ├── usersSlice.ts   # Redux slice for users
-│   │   ├── store.ts            # Redux store setup
-│   ├── styles
-│   │   ├── modal.scss          # modal style
-│   │   ├── table-responsive.scss    # table style
-│   │   ├── main.scss           # Main Sass file
+│   │   ├── RefundOrders.tsx   
+│   │   ├── OrderDetails.tsx  
+│   ├── theme
+│   │   ├── ThemeContext.tsx  
 ├── db.json                      # Mock database for JSON Server
-```
 
-## Testing
+## Contact
 
-This project uses Jest and React Testing Library for testing.
-
-### Running Tests
-To execute the test suite, run:
-```bash
-npm run test
-```
-
-### Example Test Case
-Here is an example test for a component:
-
-```tsx
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import Table from '../components/table/Table';
-
-// Fake test data
-const mockData = [
-  { id: '1', name: 'Order 1', status: 'Pending' },
-  { id: '2', name: 'Order 2', status: 'Shipped' },
-];
-
-const mockColumns = [
-  { key: 'id', label: 'ID', title: 'ID' },
-  { key: 'name', label: 'Name', title: 'Name' },
-  { key: 'status', label: 'Status', title: 'Status' },
-];
-
-describe('TableComponent', () => {
-  it('renders table headers correctly', () => {
-    const MockActions = () =>{
-        return <button>Delete</button>
-    };
-    render(<Table data={mockData} columns={mockColumns} Actions={MockActions} />);
-    mockColumns.forEach((column) => {
-      expect(screen.getByText(column.label)).toBeInTheDocument();
-    });
-  });
-
-  it('renders table rows correctly', () => {
-    const MockActions = () => {
-        return <button>Delete</button>;
-    };
-    render(<Table data={mockData} columns={mockColumns} Actions={MockActions} />);
-    mockData.forEach((row) => {
-      expect(screen.getByText(row.name)).toBeInTheDocument();
-    });
-  });
-
-  it('handles row delete correctly', () => {
-    const handleDelete = jest.fn();
-    render(
-      <Table
-        data={mockData}
-        columns={mockColumns}
-        Actions={handleDelete}
-      />
-    );
-
-  });
-});
-
-```
-
-### Adding More Tests
-To add more tests:
-1. Create a new test file in the same directory as the component, e.g., `Header.test.tsx`.
-2. Use Jest and React Testing Library to write test cases for your components or utilities.
-
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
----
-
-Feel free to contribute to this project by submitting issues or pull requests!
-
+Author: @Amr7hmed

@@ -1,5 +1,5 @@
 {
-  "Orders": [
+  "refundOrders": [
     {
       "id": "ORD121",
       "reason": "Defective item",
@@ -8,7 +8,7 @@
       "store_url": "https://google.com/",
       "amount": 2600,
       "active": true,
-      "decision": "Accept",
+      "decision": "not-yet",
       "items": [
         {
           "id": "ITEM1",
@@ -43,8 +43,8 @@
       "store_logo": "https://via.placeholder.com/50",
       "store_url": "https://google.com/",
       "amount": 120.99,
-      "active": false,
-      "decision": "Reject",
+      "active": true,
+      "decision": "accept",
       "items": [
         {
           "id": "ITEM1",
@@ -62,7 +62,7 @@
       "store_url": "https://google.com/",
       "amount": 120.99,
       "active": true,
-      "decision": "Accept",
+      "decision": "accept",
       "items": [
         {
           "id": "ITEM1",

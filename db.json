@@ -1,14 +1,14 @@
 {
   "refundOrders": [
     {
-      "id": "ORD121",
+      "id": "Order1",
       "reason": "Defective item",
       "store_name": "Tech Store",
       "store_logo": "https://via.placeholder.com/50",
       "store_url": "https://google.com/",
       "amount": 2600,
-      "active": true,
-      "decision": "not-yet",
+      "active": false,
+      "decision": "accept",
       "items": [
         {
           "id": "ITEM1",
@@ -21,53 +21,143 @@
           "name": "Headphone",
           "price": 300,
           "quantity": 2
-        },
+        }
+      ]
+    },
+    {
+      "id": "Order2",
+      "reason": "Wrong item shipped",
+      "store_name": "Gadget World",
+      "store_logo": "https://via.placeholder.com/50",
+      "store_url": "https://example.com/",
+      "amount": 320.5,
+      "active": true,
+      "decision": "accept",
+      "items": [
         {
           "id": "ITEM3",
-          "name": "Book",
+          "name": "Keyboard",
           "price": 50,
-          "quantity": 4
+          "quantity": 2
         },
         {
           "id": "ITEM4",
-          "name": "TV",
-          "price": 800,
+          "name": "Mouse",
+          "price": 20,
           "quantity": 1
         }
       ]
     },
     {
-      "id": "ORD122",
-      "reason": "Defective item",
-      "store_name": "Tech Store",
+      "id": "Order3",
+      "reason": "Item not as described",
+      "store_name": "Fashion Hub",
       "store_logo": "https://via.placeholder.com/50",
-      "store_url": "https://google.com/",
-      "amount": 120.99,
+      "store_url": "https://fashion.com/",
+      "amount": 89.99,
       "active": true,
-      "decision": "accept",
+      "decision": "not-yet",
       "items": [
         {
-          "id": "ITEM1",
-          "name": "Laptop",
-          "price": 1000,
+          "id": "ITEM5",
+          "name": "T-shirt",
+          "price": 30,
+          "quantity": 2
+        },
+        {
+          "id": "ITEM6",
+          "name": "Sneakers",
+          "price": 60,
           "quantity": 1
         }
       ]
     },
     {
-      "id": "ORD123",
-      "reason": "Defective item",
-      "store_name": "Tech Store",
+      "id": "Order4",
+      "reason": "Late delivery",
+      "store_name": "Home Essentials",
       "store_logo": "https://via.placeholder.com/50",
-      "store_url": "https://google.com/",
-      "amount": 120.99,
+      "store_url": "https://home.com/",
+      "amount": 199.99,
+      "active": false,
+      "decision": "not-yet",
+      "items": [
+        {
+          "id": "ITEM7",
+          "name": "Vacuum Cleaner",
+          "price": 199.99,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Order5",
+      "reason": "Damaged on arrival",
+      "store_name": "ElectroMart",
+      "store_logo": "https://via.placeholder.com/50",
+      "store_url": "https://electro.com/",
+      "amount": 799.99,
+      "active": true,
+      "decision": "not-yet",
+      "items": [
+        {
+          "id": "ITEM8",
+          "name": "Smartphone",
+          "price": 799.99,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Order6",
+      "reason": "Different color received",
+      "store_name": "Fashion World",
+      "store_logo": "https://via.placeholder.com/50",
+      "store_url": "https://fashionworld.com/",
+      "amount": 59.99,
       "active": true,
       "decision": "accept",
       "items": [
         {
-          "id": "ITEM1",
-          "name": "Laptop",
-          "price": 1000,
+          "id": "ITEM9",
+          "name": "Jacket",
+          "price": 59.99,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Order7",
+      "reason": "Package missing items",
+      "store_name": "Tech Haven",
+      "store_logo": "https://via.placeholder.com/50",
+      "store_url": "https://techhaven.com/",
+      "amount": 299.99,
+      "active": false,
+      "decision": "not-yet",
+      "items": [
+        {
+          "id": "ITEM10",
+          "name": "Tablet",
+          "price": 299.99,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Order8",
+      "reason": "Received expired product",
+      "store_name": "Health & Beauty",
+      "store_logo": "https://via.placeholder.com/50",
+      "store_url": "https://healthbeauty.com/",
+      "amount": 25.99,
+      "active": true,
+      "decision": "reject",
+      "items": [
+        {
+          "id": "ITEM11",
+          "name": "Skin Cream",
+          "price": 25.99,
           "quantity": 1
         }
       ]

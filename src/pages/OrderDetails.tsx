@@ -10,7 +10,7 @@ const OrderDetails: React.FC = () => {
   const { data: order, isLoading, error } = useQuery({
     queryKey: ["orderDetails", id],
     queryFn: () => fetchOrderDetails(id!),
-    enabled: !!id, // لا تبدأ الفetch إلا إذا كان هناك ID
+    enabled: !!id, 
   });
 
   if (isLoading)
@@ -50,7 +50,7 @@ const OrderDetails: React.FC = () => {
                 secondary={`Price: $${item.price} - Quantity: ${item.quantity}`}
               />
             </ListItem>
-            {index !== order.items.length - 1 && <Divider />} {/* إضافة فاصل بين العناصر */}
+            {index !== order.items.length - 1 && <Divider />} 
           </React.Fragment>
         ))}
       </List>

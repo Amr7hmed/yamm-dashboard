@@ -29,7 +29,7 @@ const OrderDetails: React.FC = () => {
         p: 4,
         maxWidth: 600,
         mx: "auto",
-        my: 4,
+        my: 8,
         borderRadius: 3,
         boxShadow: 3,
         backgroundColor: "background.paper",

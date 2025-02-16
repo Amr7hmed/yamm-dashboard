@@ -1,15 +1,9 @@
 import React from "react";
 import { TableRow, TableCell, Avatar, Switch, Select, MenuItem } from "@mui/material";
-import { Order } from "../types"; // تأكد من وجود ملف `types.ts` يحتوي على تعريف `Order`
+import { OrderRowProps } from "../types"; 
 import { useNavigate } from "react-router-dom";
 
-interface Props {
-  order: Order;
-  onToggleStatus: (id: string) => void;
-  onChangeDecision: (id: string, decision: string) => void;
-}
-
-const OrderRow: React.FC<Props> = ({ order, onToggleStatus, onChangeDecision }) => {
+const OrderRow: React.FC<OrderRowProps> = ({ order, onToggleStatus, onChangeDecision }) => {
   const navigate = useNavigate();
 
   return (
@@ -20,8 +14,8 @@ const OrderRow: React.FC<Props> = ({ order, onToggleStatus, onChangeDecision }) 
       >
         {order.id}
       </TableCell>
-      <TableCell style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-        <Avatar src={order.store_logo} alt="Store Logo" />
+      <TableCell >
+        <Avatar src={order.store_logo} alt="Store Logo" style={{ display: "inline-flex", alignItems: "center", marginRight:".5rem" }}/>
         <span 
           onClick={() => window.open(order.store_url, "_blank")} 
           style={{ cursor: "pointer", textDecoration: "underline", color: "blue" }}

@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination } from "@mui/material";
+import { Table, TableBody, TableContainer, Paper, TablePagination } from "@mui/material";
 import OrderRow from "./OrderRow";
-import { Order } from "../types";
+import { OrderTableProps } from "../types";
+import Tablehead from "./TableHead";
 
-interface Props {
-  data: Order[];
-  onToggleStatus: (id: string) => void;
-  onChangeDecision: (id: string, decision: string) => void;
-}
 
-const OrdersTable: React.FC<Props> = ({ data, onToggleStatus, onChangeDecision }) => {
+const OrdersTable: React.FC<OrderTableProps> = ({ data, onToggleStatus, onChangeDecision }) => {
   const [page, setPage] = useState(0);
   const rowsPerPage = 3;
 
@@ -19,19 +15,12 @@ const OrdersTable: React.FC<Props> = ({ data, onToggleStatus, onChangeDecision }
 
   const paginatedData = data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
+  const HeadTableArray = ["ID", "Store", "Amount", "Items", "Active", "Decision"];
+
   return (
     <TableContainer component={Paper}>
       <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>ID</TableCell>
-            <TableCell>Store</TableCell>
-            <TableCell>Amount</TableCell>
-            <TableCell>Items</TableCell>
-            <TableCell>Active</TableCell>
-            <TableCell>Decision</TableCell>
-          </TableRow>
-        </TableHead>
+        <Tablehead HeadTableArray={HeadTableArray} />
         <TableBody>
           {paginatedData.map((order) => (
             <OrderRow key={order.id} order={order} onToggleStatus={onToggleStatus} onChangeDecision={onChangeDecision} />
